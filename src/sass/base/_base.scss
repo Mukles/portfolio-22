@@ -1,0 +1,7 @@
+.gap-y > *:not(:last-child) {
+  margin-bottom: 10px;
+}
+
+.gap-x > *:not(:last-child) {
+  margin-right: 10px;
+}

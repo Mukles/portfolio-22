@@ -1,14 +1,14 @@
 * {
   // this is a bad idea, but works for now
-  font-variation-settings: "wght" var(--font-weight, 375),
-    "wdth" var(--font-width, 80);
+  color: var(--clr-secondary-300);
+  font-family: "Itim", cursive;
 }
 
 body {
-  font-size: var(--fs-400);
-  font-family: "Alaska", sans-serif;
-  color: var(--clr-neutral-900);
+  background-color: var(--clr-primary-300);
+  color: var(--clr-secondary-300);
   letter-spacing: -0.5px;
+  font-size: 3rem;
 }
 
 h1,
@@ -55,26 +55,12 @@ strong {
 }
 
 a {
-  color: var(--clr-primary-400);
+  color: var(--clr-secondary-300);
   text-decoration: none;
 
   &:hover,
   &:focus {
-    color: var(--clr-primary-500);
+    color: var(--clr-secondary-500);
     text-decoration: none;
   }
-}
-
-p:not([class]),
-ul:not([class]),
-li:not([class]) {
-  max-width: 60ch;
-}
-
-.gap-y > * :not(:last-child) {
-  margin-bottom: 10px;
-}
-
-.gap-y > * :not(:last-child) {
-  margin-bottom: 10px;
 }
