@@ -1,0 +1,42 @@
+@use "../abstracts" as *;
+
+:root {
+  --section-spacing: 7rem;
+  @include mq(md) {
+    --section-spacing: 3.5rem;
+  }
+
+  @each $color, $shade in $colors {
+    @each $prop, $value in $shade {
+      --clr-#{$color}-#{$prop}: #{$value};
+    }
+  }
+
+  body:is(.light) {
+    :root {
+      @each $color, $shade in $colors {
+        @each $prop, $value in $shade {
+          @if ($color == "secondary") {
+            --clr-primary-#{$prop}: #{$value};
+          } @else {
+            --clr-secondary-#{$prop}: #{$value};
+          }
+        }
+      }
+    }
+  }
+
+  @each $screen-size, $property in $type-scale {
+    @if $screen-size != sm {
+      @each $prop, $value in $property {
+        --fs-#{$prop}: #{$value};
+      }
+    } @else {
+      @include mq(sm) {
+        @each $prop, $value in $property {
+          --fs-#{$prop}: #{$value};
+        }
+      }
+    }
+  }
+}
