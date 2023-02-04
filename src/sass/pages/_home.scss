@@ -15,6 +15,20 @@
         margin-bottom: 40px;
       }
 
+      &[data-is-fullscreen="true"] {
+        position: static;
+      }
+
+      a {
+        font-size: 56px;
+        color: var(--clr-secondary-400);
+
+        &:hover + div img {
+          height: 125px;
+          opacity: 1;
+        }
+      }
+
       img {
         position: absolute;
         left: 0;
@@ -24,12 +38,25 @@
         height: 0;
         object-fit: cover;
         z-index: -1;
+        transition: all 0.5s;
+        overflow: hidden;
+        opacity: 0;
       }
     }
   }
 }
 
-img[data-is-fullscreen="true"] {
-  height: 100% !important;
-  transition: 0.5s;
+.privacy-screen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 100%;
+  background-color: red;
+  z-index: 2;
+
+  &.yellow {
+    background-color: yellow;
+  }
 }

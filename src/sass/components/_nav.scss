@@ -1,0 +1,16 @@
+header {
+  display: flex;
+  align-items: flex-end;
+  padding: 20px;
+  position: absolute;
+  right: 0;
+
+  ul {
+    padding: 10px;
+
+    li a {
+      color: var(--clr-secondary-500);
+      font-size: 16px;
+    }
+  }
+}

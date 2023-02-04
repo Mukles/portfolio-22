@@ -7,21 +7,21 @@ export const data = [
   {
     id: 1,
     img: img1,
-    text: "Portfolio",
+    text: "Photo folio",
   },
   {
     id: 2,
     img: img2,
-    text: "Portfolio",
+    text: "Maccė Studio",
   },
   {
     id: 3,
     img: img3,
-    text: "Portfolio",
+    text: "Victoria Labalme.",
   },
   {
     id: 4,
     img: img4,
-    text: "Portfolio",
+    text: "Komono",
   },
 ];

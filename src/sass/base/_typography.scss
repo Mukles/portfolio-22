@@ -1,14 +1,15 @@
 * {
-  // this is a bad idea, but works for now
   color: var(--clr-secondary-300);
-  font-family: "Itim", cursive;
+  font-family: "Lato", sans-serif;
 }
 
 body {
   background-color: var(--clr-primary-300);
   color: var(--clr-secondary-300);
+  font-family: "Lato", sans-serif;
   letter-spacing: -0.5px;
-  font-size: 3rem;
+  font-size: 18px;
+  font-weight: 400;
 }
 
 h1,
@@ -21,6 +22,7 @@ h4 {
   font-stretch: 100%;
   line-height: 1.1;
   color: var(--clr-neutral-800);
+  font-family: "Amiri", serif;
 }
 
 h1 {
@@ -32,11 +34,9 @@ h1 {
 }
 
 h2 {
-  --flow-spacer: 1.5em;
   font-size: --fs-700;
 }
 h3 {
-  --flow-spacer: 1.5em;
   font-size: --fs-600;
 }
 
@@ -60,7 +60,6 @@ a {
 
   &:hover,
   &:focus {
-    color: var(--clr-secondary-500);
     text-decoration: none;
   }
 }
