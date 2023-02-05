@@ -32,7 +32,7 @@ const Index = () => {
     <section>
       <PrivacyScreen />
       <Social />
-      <Navbar />
+      <Navbar>{[{ href: "/about", text: "À Propos" }]}</Navbar>
       <LayoutGroup>
         <div className="home">
           <motion.ul
@@ -58,7 +58,7 @@ const Index = () => {
                           to="/"
                           onClick={(event) => clickHanlder(event, item)}
                         >
-                          {item.text}
+                          <motion.a>{item.text}</motion.a>
                         </Link>
                         <div>
                           <motion.img

@@ -1,36 +1,58 @@
-import { Link } from "react-router-dom";
-import PrivacyScreen from "../Components/animate";
-import Social from "../Components/social";
+import me from "../assets/img/me.png";
+import Navbar from "../Components/navbar";
 
 const About = () => {
   return (
     <section>
-      <PrivacyScreen />
-      <Social />
-      <div className="container h-100">
-        <div className="about">
-          <h2>Photo folio.</h2>
-          <div className="link">
-            <Link to="/">VOIR LE SITE</Link>
-          </div>
-          <div className="content-container">
-            <div>
-              <h5>ANNÉE</h5>
-              <p>2020</p>
-            </div>
-            <div>
-              <h5>RÔLE</h5>
-              <p>UX/UI Design</p>
-              <p>Front-end Développement</p>
-            </div>
-            <div>
+      <Navbar>
+        {[
+          { href: "/about", text: "À Propos" },
+          { href: "/", text: "Project" },
+        ]}
+      </Navbar>
+
+      <div className="container">
+        <div className="about-container">
+          <img src={me} alt="Mukles Hossen" />
+          <div className="about-desc">
+            <p>Hey ! Je suis Alexandre Fournou.</p>
+
+            <div className="contact-info">
+              <h2>CONTACT</h2>
               <p>
-                Passionné de Photo depuis des années, je me suis créé cette
-                année un portfolio où je mets en avant mes clichés. De mes
-                Pyrénées natales jusqu'en Nouvelle-Zélande, j'ai photographié
-                les plus beaux paysages que j'ai eu la chance de contempler.
+                <a href="mailto:someone@example.com">
+                  alexandre.fournou@gmail.com
+                </a>
+              </p>
+              <p>
+                {" "}
+                <a href="tel:+4733378901">+47 333 78 901</a>
               </p>
             </div>
+
+            <ul className="about-social">
+              <li>
+                <a className="hover" href="/">
+                  Instagram
+                </a>
+              </li>
+              <li>
+                <a className="hover" href="/">
+                  Linkdin
+                </a>
+              </li>
+              <li>
+                <a className="hover" href="/">
+                  GitHub
+                </a>
+              </li>
+              <li>
+                <a className="hover" href="/">
+                  Email
+                </a>
+              </li>
+            </ul>
+            <p>Téléchargez mon cv</p>
           </div>
         </div>
       </div>

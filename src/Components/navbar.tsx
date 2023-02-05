@@ -1,12 +1,22 @@
 import { Link } from "react-router-dom";
 
-const Navbar = () => {
+interface Props {
+  children: Array<any>;
+}
+
+const Navbar = ({ children }: Props) => {
   return (
     <header>
       <ul>
-        <li>
-          <Link to={"/about"}>À Propos</Link>
-        </li>
+        {children.map((item, i) => {
+          return (
+            <li key={i}>
+              <Link className="hover" to={item.href}>
+                {item.text}
+              </Link>
+            </li>
+          );
+        })}
       </ul>
     </header>
   );
