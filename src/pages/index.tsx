@@ -1,47 +1,31 @@
-import {
-  AnimatePresence,
-  LayoutGroup,
-  motion,
-  useAnimation,
-} from "framer-motion";
-import { useEffect, useState } from "react";
+import { AnimatePresence, LayoutGroup, motion } from "framer-motion";
+import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import PrivacyScreen from "../Components/animate";
 import Navbar from "../Components/navbar";
 import Social from "../Components/social";
 import { data } from "../data";
 
+const transition = { duration: 0.3, ease: "easeInOut" };
+const varients = {
+  animate: { height: "100%", opacity: 1 },
+  exit: { opacity: 0, y: 60 },
+};
+
 const Index = () => {
   const [selectedImg, setSeletectedImg] = useState<any>();
-  const [isFullscreen, setFullscreen] = useState(false);
-  const controls = useAnimation();
   const navigate = useNavigate();
-
-  useEffect(() => {
-    if (selectedImg?.id) {
-      setTimeout(() => {
-        setFullscreen(true);
-      }, 1000);
-    }
-  }, [isFullscreen, selectedImg?.id]);
+  const sleep = () => {
+    setTimeout(() => {
+      navigate("/about");
+    }, 800);
+  };
 
   const clickHanlder = async (
     event: React.MouseEvent<HTMLAnchorElement, MouseEvent>,
     item: any
   ) => {
     setSeletectedImg(item);
-    controls.start({
-      height: "100%",
-      opacity: 1,
-      transition: {
-        ease: "linear",
-        delay: 0.3,
-        duration: 1,
-      },
-    });
-    setTimeout(() => {
-      navigate("/about");
-    }, 1800);
   };
 
   return (
@@ -51,51 +35,47 @@ const Index = () => {
       <Navbar />
       <LayoutGroup>
         <div className="home">
-          <ul className="gap-y">
+          <motion.ul
+            className="gap-y"
+            transition={{ staggerChildren: 0.3, ease: "easeInOut" }}
+          >
             {data.map((item) => {
+              const isFullScreen = selectedImg?.id === item.id;
               return (
-                <AnimatePresence
-                  key={item.id}
-                  initial={false}
-                  exitBeforeEnter
-                  mode="wait"
-                >
-                  {(!selectedImg || selectedImg.id === item.id) && (
+                <AnimatePresence key={item.id} initial={false}>
+                  {(!selectedImg || isFullScreen) && (
                     <motion.li
                       layout
-                      exit={{ opacity: 0, y: 60, zIndex: -2 }}
-                      transition={{
-                        duration: 0.3,
-                        type: "tween",
-                        ease: "easeInOut",
-                      }}
-                      style={isFullscreen ? { position: "static" } : {}}
+                      exit={!isFullScreen ? varients.exit : {}}
+                      transition={transition}
+                      animate={isFullScreen ? { height: "100%" } : {}}
                     >
-                      <motion.div layout>
+                      <motion.div
+                        layout
+                        transition={{ layout: { ease: "easeInOut" } }}
+                      >
                         <Link
                           to="/"
                           onClick={(event) => clickHanlder(event, item)}
                         >
                           {item.text}
                         </Link>
-                        <motion.div layout>
+                        <div>
                           <motion.img
-                            style={
-                              selectedImg?.id === item.id
-                                ? { height: "120px", opacity: 1 }
-                                : {}
-                            }
-                            animate={controls}
+                            onAnimationComplete={() => sleep()}
+                            animate={isFullScreen ? varients.animate : {}}
                             src={item.img}
+                            transition={{ ...transition, duration: 0.8 }}
+                            alt="img"
                           />
-                        </motion.div>
+                        </div>
                       </motion.div>
                     </motion.li>
                   )}
                 </AnimatePresence>
               );
             })}
-          </ul>
+          </motion.ul>
         </div>
       </LayoutGroup>
     </section>
