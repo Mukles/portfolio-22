@@ -1,37 +1,62 @@
-import { Link } from "react-router-dom";
+//import me from "../assets/img/me.png";
 import PrivacyScreen from "../Components/animate";
-import Social from "../Components/social";
+import Navbar from "../Components/navbar";
 
 const About = () => {
   return (
-    <section>
+    <section style={{ background: "#0E0D0B" }}>
+      <Navbar>{[{ href: "/", text: "Project" }]}</Navbar>
       <PrivacyScreen />
-      <Social />
-      <div className="container h-100">
-        <div className="about">
-          <h2>Photo folio.</h2>
-          <div className="link">
-            <Link to="/">VOIR LE SITE</Link>
+
+      <div className="about-container">
+        <div className="about-photo"></div>
+
+        <div className="about-desc">
+          <p>Hey ! Je suis Alexandre Fournou.</p>
+
+          <div className="contact-info">
+            <h2>CONTACT</h2>
+            <p>
+              <a href="mailto:someone@example.com">
+                alexandre.fournou@gmail.com
+              </a>
+            </p>
+            <p>
+              <a href="tel:+4733378901">+47 333 78 901</a>
+            </p>
           </div>
-          <div className="content-container">
-            <div>
-              <h5>ANNÉE</h5>
-              <p>2020</p>
-            </div>
-            <div>
-              <h5>RÔLE</h5>
-              <p>UX/UI Design</p>
-              <p>Front-end Développement</p>
-            </div>
-            <div>
-              <p>
-                Passionné de Photo depuis des années, je me suis créé cette
-                année un portfolio où je mets en avant mes clichés. De mes
-                Pyrénées natales jusqu'en Nouvelle-Zélande, j'ai photographié
-                les plus beaux paysages que j'ai eu la chance de contempler.
-              </p>
-            </div>
-          </div>
+
+          <ul className="about-social">
+            <li>
+              <a className="hover" href="/">
+                Instagram
+              </a>
+            </li>
+            <li>
+              <a className="hover" href="/">
+                Linkdin
+              </a>
+            </li>
+            <li>
+              <a className="hover" href="/">
+                GitHub
+              </a>
+            </li>
+            <li>
+              <a className="hover" href="/">
+                Email
+              </a>
+            </li>
+          </ul>
+          <p>
+            <a
+              className="hover download-cv"
+              href="/images/myw3schoolsimage.jpg"
+              download
+            >
+              Download my resume
+            </a>
+          </p>
         </div>
       </div>
     </section>

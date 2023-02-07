@@ -1,54 +1,81 @@
-.about {
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-  height: 100%;
-  max-width: 750px;
+@use "../abstracts/" as *;
 
-  h2 {
-    font-weight: 400;
-    font-size: 56px;
-    line-height: 84px;
-    margin-bottom: 124px;
+.about-container {
+  display: flex;
+  align-items: center;
+  height: 100vh;
+  overflow: hidden;
+  max-width: 900px;
+  width: 100%;
+  margin: auto;
+
+  @include mq(sm) {
+    flex-direction: column;
   }
 
-  & > .link {
-    font-size: 14px;
-    line-height: 21px;
-    font-weight: 700;
-    display: inline;
-    margin-bottom: 38px;
+  & > * {
+    width: 50%;
+    &:not(:last-child) {
+      margin-right: 20px;
+    }
+  }
+
+  & > .about-photo {
+    width: 100%;
+    height: 100%;
+    z-index: 10;
+    background-image: linear-gradient(0deg, #0e0d0b, transparent 25%),
+      url(http://alexandre-fournou.com/profil.8dee4cfc.jpg);
+    background-size: cover;
+    background-position: 50% 50%;
+  }
+
+  .about-desc {
+    z-index: 20;
+    p {
+      font-size: 18px;
+      line-height: 27px;
+      font-weight: 400;
+      color: var(--clr-secondary-400);
+    }
+
+    & > p {
+      margin-bottom: 45px;
+    }
+  }
+
+  .contact-info {
+    h2 {
+      font-family: "Lato", sans-serif;
+      font-size: 15px;
+      font-weight: 800;
+      line-height: 21px;
+      color: var(--clr-secondary-400);
+    }
+    p,
     a {
       color: var(--clr-secondary-500);
     }
   }
 
-  .content-container {
-    display: flex;
+  .about-social {
+    margin-block: 18px;
 
-    & > *:not(:last-child) {
-      margin-right: 78px;
-    }
-
-    & > div {
-      &:last-child {
-        flex: 1;
+    li {
+      &:not(:last-child) {
+        margin-bottom: 2px;
       }
 
-      h5 {
-        font-weight: 700;
-        font-size: 14px;
-        line-height: 21px;
-        color: var(--clr-secondary-500);
-      }
-
-      p {
+      a {
         font-size: 18px;
-        font-weight: 400;
         line-height: 27px;
+        font-weight: 400;
         color: var(--clr-secondary-500);
-        margin-bottom: 5px;
       }
     }
+  }
+
+  .download-cv {
+    color: var(--clr-secondary-500);
   }
 }

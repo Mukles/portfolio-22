@@ -1,15 +1,19 @@
 import { AnimatePresence } from "framer-motion";
 import { cloneElement } from "react";
 import { useLocation, useRoutes } from "react-router-dom";
-import "./App.css";
 import Index from "./pages";
 import About from "./pages/about";
+import Project from "./pages/project";
 
 function App() {
   let element = useRoutes([
     {
       path: "/",
       element: <Index />,
+    },
+    {
+      path: "/project",
+      element: <Project />,
     },
     {
       path: "/about",
@@ -22,7 +26,7 @@ function App() {
   if (!element) return null;
 
   return (
-    <AnimatePresence mode="wait" initial={false}>
+    <AnimatePresence initial={false} mode="wait" exitBeforeEnter>
       {cloneElement(element, { key: location.pathname })}
     </AnimatePresence>
   );

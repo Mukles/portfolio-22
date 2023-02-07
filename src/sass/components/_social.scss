@@ -1,13 +1,19 @@
+@use "../abstracts/" as *;
+
 .social {
-  position: absolute;
-  left: 40px;
+  position: fixed;
+  left: 12px;
   top: 0;
   bottom: 0;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  z-index: 10;
+  z-index: 20;
+
+  @include mq(md) {
+    display: none;
+  }
 
   li {
     &:not(:last-child) {
@@ -20,26 +26,9 @@
       display: inline-block;
       font-size: 16px;
       line-height: 24px;
-      color: var(--clr-secondary-300);
+      color: var(--clr-secondary-500);
       font-weight: 500;
       position: relative;
-
-      &:hover::after {
-        width: 100%;
-        left: 0;
-        right: auto;
-      }
-
-      &::after {
-        content: "";
-        position: absolute;
-        bottom: -2px;
-        right: 0;
-        height: 2px;
-        width: 0%;
-        background: var(--clr-secondary-300);
-        transition: 0.5s;
-      }
     }
   }
 }
