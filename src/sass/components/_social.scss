@@ -9,7 +9,7 @@
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  z-index: 10;
+  z-index: 20;
 
   @include mq(md) {
     display: none;

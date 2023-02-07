@@ -4,18 +4,13 @@ const PrivacyScreen = () => {
   const isPresent = useIsPresent();
 
   return (
-    <>
-      <motion.div
-        initial={{ scaleY: 1 }}
-        animate={{ scaleY: 0, transition: { duration: 1, ease: "circOut" } }}
-        exit={{ scaleY: 1, transition: { duration: 1, ease: "circIn" } }}
-        style={{ originY: isPresent ? 0 : 1 }}
-        className="privacy-screen"
-      >
-        <div />
-        <div />
-      </motion.div>
-    </>
+    <motion.ul
+      initial={{ scaleY: 1 }}
+      animate={{ scaleY: 0, transition: { duration: 0.3, ease: "linear" } }}
+      exit={{ scaleY: 1, transition: { duration: 0.3, ease: "linear" } }}
+      style={{ originY: isPresent ? 0 : 1 }}
+      className="privacy-screen"
+    />
   );
 };
 

@@ -1,7 +1,17 @@
+@use "../abstracts/" as *;
+
 .about-container {
   display: flex;
   align-items: center;
   height: 100vh;
+  overflow: hidden;
+  max-width: 900px;
+  width: 100%;
+  margin: auto;
+
+  @include mq(sm) {
+    flex-direction: column;
+  }
 
   & > * {
     width: 50%;
@@ -10,12 +20,18 @@
     }
   }
 
-  & > img {
+  & > .about-photo {
+    width: 100%;
     height: 100%;
-    object-fit: cover;
+    z-index: 10;
+    background-image: linear-gradient(0deg, #0e0d0b, transparent 25%),
+      url(http://alexandre-fournou.com/profil.8dee4cfc.jpg);
+    background-size: cover;
+    background-position: 50% 50%;
   }
 
   .about-desc {
+    z-index: 20;
     p {
       font-size: 18px;
       line-height: 27px;
@@ -31,10 +47,14 @@
   .contact-info {
     h2 {
       font-family: "Lato", sans-serif;
-      font-size: 14px;
-      font-weight: 700;
+      font-size: 15px;
+      font-weight: 800;
       line-height: 21px;
       color: var(--clr-secondary-400);
+    }
+    p,
+    a {
+      color: var(--clr-secondary-500);
     }
   }
 
@@ -43,15 +63,19 @@
 
     li {
       &:not(:last-child) {
-        margin-bottom: 8px;
+        margin-bottom: 2px;
       }
 
       a {
         font-size: 18px;
         line-height: 27px;
         font-weight: 400;
-        color: var(--clr-secondary-400);
+        color: var(--clr-secondary-500);
       }
     }
+  }
+
+  .download-cv {
+    color: var(--clr-secondary-500);
   }
 }

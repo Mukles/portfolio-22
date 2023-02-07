@@ -1,11 +1,8 @@
 @use "../abstracts/" as *;
 
 .home {
-  height: 100vh;
-  height: 100%;
-  overflow: hidden;
-
   ul {
+    background-color: rgba($color: #000, $alpha: 0.75);
     position: absolute;
     top: 0;
     left: 0;
@@ -14,6 +11,7 @@
     @include center;
     flex-direction: column;
     overflow: hidden;
+    z-index: 10;
 
     li {
       width: 100%;

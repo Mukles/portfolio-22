@@ -4,7 +4,7 @@ import { Link, useNavigate } from "react-router-dom";
 import PrivacyScreen from "../Components/animate";
 import Navbar from "../Components/navbar";
 import Social from "../Components/social";
-import { data } from "../data";
+import { route } from "../data";
 
 const transition = { duration: 0.3, ease: "easeInOut" };
 const varients = {
@@ -17,8 +17,8 @@ const Index = () => {
   const navigate = useNavigate();
   const sleep = () => {
     setTimeout(() => {
-      navigate("/about");
-    }, 800);
+      navigate(selectedImg.link);
+    }, 500);
   };
 
   const clickHanlder = async (
@@ -30,16 +30,17 @@ const Index = () => {
 
   return (
     <section>
-      <PrivacyScreen />
       <Social />
       <Navbar>{[{ href: "/about", text: "À Propos" }]}</Navbar>
+      <PrivacyScreen />
+
       <LayoutGroup>
         <div className="home">
           <motion.ul
             className="gap-y"
             transition={{ staggerChildren: 0.3, ease: "easeInOut" }}
           >
-            {data.map((item) => {
+            {route.map((item) => {
               const isFullScreen = selectedImg?.id === item.id;
               return (
                 <AnimatePresence key={item.id} initial={false}>

@@ -28,31 +28,6 @@ h1 {
   --font-weight: 900;
 }
 
-h1 {
-  font-size: --fs-800;
-}
-
-h2 {
-  font-size: --fs-700;
-}
-h3 {
-  font-size: --fs-600;
-}
-
-h4 {
-  font-size: --fs-500;
-}
-
-small,
-.text-small {
-  font-size: var(--fs-300);
-}
-
-strong {
-  --font-weight: 500;
-  font-weight: normal;
-}
-
 a {
   color: var(--clr-secondary-300);
   text-decoration: none;

@@ -26,7 +26,7 @@ function App() {
   if (!element) return null;
 
   return (
-    <AnimatePresence mode="wait" initial={false}>
+    <AnimatePresence initial={false} mode="wait" exitBeforeEnter>
       {cloneElement(element, { key: location.pathname })}
     </AnimatePresence>
   );

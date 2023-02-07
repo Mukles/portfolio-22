@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import images from "../assets/photo-folio-home_w_961.a36b7260.jpg";
 import PrivacyScreen from "../Components/animate";
 import Navbar from "../Components/navbar";
 import Social from "../Components/social";
@@ -6,7 +7,6 @@ import Social from "../Components/social";
 const Project = () => {
   return (
     <section>
-      <PrivacyScreen />
       <Social />
       <Navbar>
         {[
@@ -14,6 +14,8 @@ const Project = () => {
           { href: "/", text: "Project" },
         ]}
       </Navbar>
+      <PrivacyScreen />
+
       <div className="container h-100">
         <div className="project">
           <h2>Photo folio.</h2>
@@ -37,6 +39,11 @@ const Project = () => {
                 Pyrénées natales jusqu'en Nouvelle-Zélande, j'ai photographié
                 les plus beaux paysages que j'ai eu la chance de contempler.
               </p>
+            </div>
+          </div>
+          <div>
+            <div className="project-images">
+              <img src={images} alt="project-img" />
             </div>
           </div>
         </div>

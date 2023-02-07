@@ -4,11 +4,7 @@
   left: 0;
   right: 0;
   bottom: 0;
-  height: 100%;
-  background-color: purple;
   z-index: 30;
-
-  &.yellow {
-    background-color: yellow;
-  }
+  height: 100vh;
+  background-color: azure;
 }
