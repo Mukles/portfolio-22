@@ -1,3 +1,5 @@
+import { motion, useScroll, useTransform } from "framer-motion";
+import { useRef } from "react";
 import { Link } from "react-router-dom";
 import images from "../assets/photo-folio-home_w_961.a36b7260.jpg";
 import PrivacyScreen from "../Components/animate";
@@ -5,6 +7,13 @@ import Navbar from "../Components/navbar";
 import Social from "../Components/social";
 
 const Project = () => {
+  const ref = useRef(null);
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ["start end", "end end"],
+  });
+  const y = useTransform(scrollYProgress, [0, 1], ["0%", "50%"]);
+
   return (
     <section>
       <Social />
@@ -41,11 +50,26 @@ const Project = () => {
               </p>
             </div>
           </div>
-          <div>
-            <div className="project-images">
-              <img src={images} alt="project-img" />
-            </div>
-          </div>
+        </div>
+
+        <div ref={ref}>
+          <motion.div style={{ y }} className="project-images">
+            {Array(10)
+              .fill("")
+              .map((item, i) => {
+                return (
+                  <div key={i}>
+                    <motion.img
+                      whileInView={{ scale: 1 }}
+                      initial={{ scale: 0.5 }}
+                      transition={{ duration: 0.3, ease: "easeInOut" }}
+                      src={images}
+                      alt="project-img"
+                    />
+                  </div>
+                );
+              })}
+          </motion.div>
         </div>
       </div>
     </section>
