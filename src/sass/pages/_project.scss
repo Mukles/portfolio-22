@@ -9,6 +9,10 @@
   top: 0;
   left: 0;
 
+  @include mq(md) {
+    position: static;
+  }
+
   h2 {
     font-weight: 400;
     font-size: 56px;
