@@ -17,7 +17,7 @@ const Index = () => {
   const navigate = useNavigate();
   const sleep = () => {
     setTimeout(() => {
-      navigate(selectedImg.link);
+      navigate(`/project/${selectedImg.link}`);
     }, 500);
   };
 

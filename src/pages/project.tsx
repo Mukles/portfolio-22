@@ -1,18 +1,30 @@
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
-import { Link } from "react-router-dom";
-import images from "../assets/photo-folio-home_w_961.a36b7260.jpg";
+import { useParams } from "react-router-dom";
 import PrivacyScreen from "../Components/animate";
+import Fotter from "../Components/fotter";
 import Navbar from "../Components/navbar";
 import Social from "../Components/social";
+import { data } from "../data";
 
 const Project = () => {
   const ref = useRef(null);
+  const imgRef = useRef(null);
   const { scrollYProgress } = useScroll({
     target: ref,
     offset: ["start end", "end end"],
   });
   const y = useTransform(scrollYProgress, [0, 1], ["0%", "50%"]);
+  const { scrollYProgress: opacityProgress } = useScroll({
+    target: imgRef,
+    offset: ["end end", "end start"],
+  });
+  const opacity = useTransform(opacityProgress, [0, 1], [1, 0]);
+
+  const { project } = useParams();
+  const projectDetails = data.find((item) => item.id === project);
+  const { title, link, websiteName, year, role, discription, images } =
+    projectDetails || {};
 
   return (
     <section>
@@ -26,55 +38,60 @@ const Project = () => {
       <PrivacyScreen />
 
       <div className="container h-100">
-        <div className="project">
+        <motion.div style={{ opacity }} className="project">
           <motion.h2
-            initial={{ y: 100, opacity: 0 }}
+            initial={{ y: 120, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
-            transition={{ delay: 0.8, damping: 14 }}
+            transition={{
+              delay: 0.6,
+              type: "spring",
+              stiffness: 110,
+              mass: 0.5,
+            }}
           >
-            Photo folio.
+            {title}.
           </motion.h2>
           <div className="link">
-            <Link to="/">VOIR LE SITE</Link>
+            <a target={"_blank"} href={link} rel="noreferrer">
+              VOIR LE SITE
+            </a>
           </div>
           <div className="content-container">
             <div>
-              <h5>ANNÉE</h5>
-              <p>2020</p>
+              <h5>{websiteName}</h5>
+              <p>{year}</p>
             </div>
             <div>
               <h5>RÔLE</h5>
-              <p>UX/UI Design</p>
-              <p>Front-end Développement</p>
+              {role?.map((item) => (
+                <p key={item}>{item}</p>
+              ))}
             </div>
             <div>
-              <p>
-                Passionné de Photo depuis des années, je me suis créé cette
-                année un portfolio où je mets en avant mes clichés. De mes
-                Pyrénées natales jusqu'en Nouvelle-Zélande, j'ai photographié
-                les plus beaux paysages que j'ai eu la chance de contempler.
-              </p>
+              <p>{discription}</p>
             </div>
           </div>
-        </div>
+        </motion.div>
 
         <div ref={ref}>
           <motion.div style={{ y }} className="project-images">
-            {Array(10)
-              .fill("")
-              .map((item, i) => {
-                return (
-                  <div key={i}>
-                    <motion.img
-                      whileInView={{ scale: 1 }}
-                      initial={{ scale: 0.5 }}
-                      transition={{ duration: 0.3, ease: "easeInOut" }}
-                      src={images}
-                      alt="project-img"
-                    />
-                  </div>
-                );
-              })}
+            {images?.map((item, i) => {
+              return (
+                <div key={i}>
+                  <motion.img
+                    ref={i === 0 ? imgRef : null}
+                    whileInView={{ scale: 1 }}
+                    initial={{ scale: 0.7 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.3, ease: "easeInOut" }}
+                    src={item}
+                    alt="project-img"
+                  />
+                </div>
+              );
+            })}
+
+            <Fotter />
           </motion.div>
         </div>
       </div>

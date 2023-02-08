@@ -5,6 +5,9 @@
   justify-content: center;
   flex-direction: column;
   max-width: 840px;
+  position: sticky;
+  top: 0;
+  left: 0;
 
   h2 {
     font-weight: 400;
@@ -70,10 +73,17 @@
 }
 
 .project-images {
-  display: flex;
+  @include center;
   flex-direction: column;
+  max-width: 1023px;
+  width: 100%;
+  margin: auto;
 
   & > *:not(:last-child) {
     margin-bottom: 50px;
+    width: 100%;
+    img {
+      width: 100%;
+    }
   }
 }

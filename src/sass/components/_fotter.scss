@@ -1,0 +1,78 @@
+@use "../abstracts/" as *;
+
+footer {
+  @include center;
+  width: 100%;
+  height: 230px;
+  background-color: #f1f2f4;
+  box-shadow: 0 0 0 100vmax #f1f2f4;
+  clip-path: inset(0 -100vmax);
+  justify-content: space-between;
+
+  @include mq(md) {
+    font-size: 24px;
+    line-height: 24px;
+  }
+
+  h2 a {
+    font-size: 40px;
+    line-height: 60px;
+    color: #0e0d0b;
+    font-weight: 400;
+    font-family: Amiri, serif;
+    text-transform: capitalize;
+
+    @include mq(md) {
+      font-size: 24px;
+      line-height: 24px;
+    }
+  }
+  a {
+    justify-self: center;
+
+    &.left-angles:hover span:first-child {
+      transform: translate(15px, 2px);
+      opacity: 1;
+      visibility: visible;
+    }
+
+    &.left-angles:hover span:last-child {
+      transform: translate(15px);
+    }
+
+    &:hover span:first-child {
+      transform: translate(-15px);
+    }
+
+    &:hover span:last-child {
+      transform: translate(-15px, 2px);
+      opacity: 1;
+      visibility: visible;
+    }
+  }
+
+  a span {
+    color: #0e0d0b;
+    font-weight: 700;
+    font-family: Lato, sans-serif;
+    font-size: 13px;
+    line-height: 20px;
+    text-transform: uppercase;
+    display: inline-block;
+    align-items: center;
+    justify-content: center;
+    margin-block: 10px;
+    transition: 0.2s all;
+
+    &.angles {
+      transform: translateY(2px);
+      opacity: 0;
+      visibility: hidden;
+    }
+
+    &.next {
+      width: 100%;
+      text-align: right;
+    }
+  }
+}

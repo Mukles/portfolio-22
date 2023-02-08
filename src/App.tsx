@@ -12,7 +12,7 @@ function App() {
       element: <Index />,
     },
     {
-      path: "/project",
+      path: "/project/:project",
       element: <Project />,
     },
     {
