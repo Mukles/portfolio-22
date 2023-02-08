@@ -27,7 +27,13 @@ const Project = () => {
 
       <div className="container h-100">
         <div className="project">
-          <h2>Photo folio.</h2>
+          <motion.h2
+            initial={{ y: 100, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ delay: 0.8, damping: 14 }}
+          >
+            Photo folio.
+          </motion.h2>
           <div className="link">
             <Link to="/">VOIR LE SITE</Link>
           </div>
